@@ -8,30 +8,44 @@
 
     <ProgressBar
         android:id="@+id/progress"
+        style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="210dp"
         android:layout_height="250dp"
-       android:layout_centerVertical="true"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="137dp"
-        android:indeterminate="false"
-        android:progress="0"
-        style="?android:attr/progressBarStyleHorizontal"
 
+        android:layout_marginTop="85dp"
+        android:indeterminate="false"
         android:max="100"
-        android:progressDrawable="@drawable/custom_progressbar_drawable" >
+        android:progress="0"
+        android:progressDrawable="@drawable/custom_progressbar_drawable">
 
     </ProgressBar>
 
     <TextView
         android:id="@+id/tvscan"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
+        android:layout_height="30dp"
 
+        android:layout_alignBottom="@+id/progress"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_marginBottom="109dp"
         android:background="#BFffffff"
-        android:text="Scanning..."
+        android:text="Tap to Scan"
         android:textAlignment="center"
-        android:textColor="#0000cc" />
+        android:textColor="#0000cc"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+    <Button
+        android:id="@+id/boost"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="Boost"
+        android:textColor="#ffffff"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:background="#0000cc"/>
 
 </RelativeLayout>
