@@ -9,7 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -100,5 +103,25 @@ Button boost;
         TextView messageText = alert.findViewById(android.R.id.message);
         messageText.setTextColor(Color.RED);
         messageText.setGravity(Gravity.CENTER);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.options, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+
+
+                Intent i=new Intent (MainActivity.this,MalwareScan.class);
+            startActivity(i);
+
+return true;
+
+
     }
 }

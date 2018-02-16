@@ -23,6 +23,9 @@
     <string name="tera_byte_short">TB</string>
     <!-- Suffix added to a number to signify size in petabytes. -->
     <string name="peta_byte_short">PB</string>
+<string name="your_phone_unsafe">Your phone is unsafe</string>
+    <string name="your_phone_safe">Your phone is safe</string>
 
     <string name="clean_file_size_suffix">%1$s%2$s</string>
+    <string name="title_activity_main2">Main2Activity</string>
 </resources>
