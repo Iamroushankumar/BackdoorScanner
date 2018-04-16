@@ -21,6 +21,11 @@ import android.widget.Toast;
 
 import com.example.lue.backdoorscanner.ui.JunkCleanActivity;
 import com.github.lzyzsd.circleprogress.ArcProgress;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.File;
 
@@ -41,6 +46,24 @@ Button boost;
         progressBar=(ProgressBar)findViewById(R.id.progress) ;
         taptoscan=(TextView)findViewById(R.id.tvscan);
         boost=(Button)findViewById(R.id.boost);
+
+        FirebaseDatabase databse=FirebaseDatabase.getInstance();
+        DatabaseReference myref= databse.getReference("message");
+        myref.setValue("Hello");
+        myref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String value= dataSnapshot.getValue(String.class);
+                Log.d("HELLO_Value_Change",value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                                   Log.w("Failed to read value",databaseError.toException());
+
+            }
+        }) ;
+
         boost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,26 +76,33 @@ Button boost;
         taptoscan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                taptoscan.setText("Scanning...");
-                taptoscan.setEnabled(false);
-                animation = ObjectAnimator.ofInt (progressBar, "progress", 0, 500); // see this max value coming back here, we animale towards that value
-                animation.setDuration (50000); //in milliseconds
-                animation.setInterpolator (new DecelerateInterpolator());
-                animation.start();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent i=new Intent(MainActivity.this,AllApp.class);
-                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(i);
-                    }
-
-                },5000);
+              startScanning();
             }
         });
 
+
+
     }
 
+
+    public void startScanning(){
+        taptoscan.setText("Scanning...");
+        taptoscan.setEnabled(false);
+        animation = ObjectAnimator.ofInt (progressBar, "progress", 0, 500); // see this max value coming back here, we animale towards that value
+        animation.setDuration (50000); //in milliseconds
+        animation.setInterpolator (new DecelerateInterpolator());
+        animation.start();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i=new Intent(MainActivity.this,AllApp.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
+            }
+
+        },5000);
+
+    }
     @Override
     protected void onResume() {
         super.onResume();
@@ -124,4 +154,5 @@ return true;
 
 
     }
+
 }

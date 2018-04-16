@@ -70,21 +70,21 @@ private void setValues(){
     if(permissionarray!=null){ for(int i=0;i<packageInfo.permissions.length;i++){
 
         if(packageInfo.permissions[i].protectionLevel== PermissionInfo.PROTECTION_DANGEROUS){
-            privacylevel.setText("Risk");
+            privacylevel.setText("High");
             privacylevel.setTextColor(Color.RED);
 
         }
         else if(packageInfo.permissions[i].protectionLevel==PermissionInfo.PROTECTION_SIGNATURE ||packageInfo.permissions[i].protectionLevel==PermissionInfo.PROTECTION_SIGNATURE_OR_SYSTEM){
             privacylevel.setTextColor(getResources().getColor(R.color.warning));
-            privacylevel.setText("Warning");
+            privacylevel.setText("Medium");
         }
         else{
-            privacylevel.setText("Normal");
+            privacylevel.setText("Low");
             privacylevel.setTextColor(Color.GREEN);
         }
     }}
     else{
-        privacylevel.setText("Normal");
+        privacylevel.setText("Low");
         privacylevel.setTextColor(Color.GREEN);
     }
 

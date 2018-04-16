@@ -16,7 +16,7 @@
         android:textSize="14sp"
         android:ellipsize="middle"
         android:singleLine="true"
-        android:text="等待扫描" />
+        android:text="Wait :" />
 
     <TextView android:id="@+id/total_size"
         android:layout_above="@id/progress_msg"
